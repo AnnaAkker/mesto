@@ -29,9 +29,19 @@
 }
 
 .profile {
-    max-width: 2;
+    max-width: 880px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
     padding-top: 40px;
     padding-bottom: 60px;
+}
+
+.profile__description {
+    display: flex;
+    flex-direction: row;
 }
 
 .profile__image {
@@ -43,6 +53,7 @@
 }
 
 .profile__name {
+    max-width: 294px;
     font-style: normal;
     font-weight: 500;
     font-size: 42px;
@@ -51,12 +62,13 @@
 }
 
 .profile__button-edit {
-    background-image: url(./image/icon/Edit\ Button.png);
-    background-color: #000000;
+    background-image: url(./image/icon/Edit_Button.svg);
+    background-color: transparent;
     width: 24px;
     height: 24px;
     border: none;
     transition: .1s ease-in-out;
+    border: none;
 }
 
 .profile__button-edit:hover {
@@ -74,8 +86,12 @@
 }
 
 .profile__button-add {
+    width: 150px;
+    height: 50px;
     background-image: url(./image/Add\ Button.svg);
-    max-width: 150px;
+    background-color: transparent;
+    
+
 }
 
 .elements {
@@ -90,7 +106,7 @@
 
 .elements__card {
     max-width: 282px;
-    border-radius: 10%;
+    border-radius: 10px;
     background-color: #fff;
     display: flex;
     flex-direction: column;
@@ -98,7 +114,6 @@
     justify-self: center;
     overflow: hidden;
     position: relative;
-    z-index: 0;
 }
 
 .elements__image {
@@ -109,8 +124,14 @@
 
 .elements__description {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     background-color: #fff;
+    align-items: center;
+    align-self: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    
 }
 
 .elements__description-title {
@@ -120,12 +141,14 @@
     line-height: 29px;
     color: #000000;
     margin: 0;
-    overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .elements__description-button {
     background-image: url(/image/icon/Like_disabled.svg);
+    background-color: transparent;
     max-width: 22px;
     height: 19px;
     border: none;
