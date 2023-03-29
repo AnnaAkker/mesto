@@ -23,6 +23,12 @@
     border-bottom: 1px solid #545454;
 }
 
+@media screen and (max-width: 935px) {
+    .header {
+        max-width: 600px;
+    }
+}
+
 .header__logo {
     max-width: 142px;
     padding-bottom: 41px;
@@ -122,9 +128,9 @@
 
 @media screen and (max-width: 620px) {
     .elements {
-        max-width: 580px;
+        max-width: 282px;
         display: flex;
-        grid-template-columns: ;
+        flex-direction: column;
     }
 }
 
