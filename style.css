@@ -38,7 +38,14 @@
 .header__logo {
     max-width: 142px;
     padding-bottom: 41px;
+    transition: .1s ease-in-out;
 }
+
+.header__logo:hover {
+    opacity: 0.1;
+    cursor: pointer;
+}
+
 
 @media screen and (max-width: 620px) {
     .header__logo {
@@ -152,7 +159,7 @@
 }
 
 .profile__button-edit:hover {
-    opacity: 0.8;
+    opacity: 0.6;
     cursor: pointer;
 }
 
@@ -198,7 +205,13 @@
     background-color: transparent;
     background-repeat: no-repeat;
     align-self: center;
+    transition: .1s ease-in-out;
     border: none;
+}
+
+.profile__button-add:hover {
+    opacity: 0.6;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 935px) {
