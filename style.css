@@ -407,6 +407,9 @@
     padding: 0;
 }
 
+.popup__button-close:hover {
+    opacity: 0.5;
+}
 
 .popup__form {
     width: 430px;
