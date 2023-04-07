@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./vendor/normalize.css">
         <link rel="stylesheet" href="./style.css">
         <title>Mesto Russia</title>
     </head>
@@ -15,61 +16,73 @@
                 <img class="profile__image" src="./image/Profile image.svg" alt="Фотография в профиле">
                 <div class="profile__block">
                     <h2 class="profile__name">Жак-Ив Кусто</h2>
-                    <button class="profile__button-edit" type="button"></button>
+                    <button type="button" class="profile__button-edit"></button>
                     <p class="profile__subtitle">Исследователь океана</p>
                 </div>
             </div>
-            <button class="profile__button-add" type="button"></button>
+            <button type="button" class="profile__button-add"></button>
         </section>
         <section class="elements">
                 <div class="elements__card">
                     <img class="elements__image" src="./image/Photo/jack-dong-G9TVFHePumE-unsplash.jpg" alt="Фото городского пейзажа с лестницей">
                     <div class="elements__description">
                         <h2 class="elements__description-title">Лестница</h2>
-                        <button type="button" class="elements__description-button"></button>
+                        <button type="button" class="elements__like-button"></button>
                     </div>
                 </div>
                 <div class="elements__card">
                     <img class="elements__image" src="./image/Photo/kevin-charit-W2MjH-G_lWY-unsplash.jpg" alt="Пейзаж заснеженных гор">
                     <div class="elements__description">
                         <h2 class="elements__description-title">Вид с берега</h2>
-                        <button type="button" class="elements__description-button"></button>
+                        <button type="button" class="elements__like-button"></button>
                     </div>
                 </div>
                 <div class="elements__card">
                     <img class="elements__image" src="./image/Photo/lesia-cvh_ynQLHho-unsplash.jpg" alt="Фото фасада дома и гаража в теплой стране">
                     <div class="elements__description">
                         <h2 class="elements__description-title">Монохром пейзаж</h2>
-                         <button type="button" class="elements__description-button"></button>
+                         <button type="button" class="elements__like-button"></button>
                     </div>
                 </div>
                 <div class="elements__card">
                     <img class="elements__image" src="./image/Photo/markus-spiske-hMAXV7GGe48-unsplash.jpg" alt="Песпектива станции метро">
                     <div class="elements__description">
                         <h2 class="elements__description-title">Станция метро</h2>
-                        <button type="button" class="elements__description-button"></button>
+                        <button type="button" class="elements__like-button"></button>
                     </div>
                 </div>
                 <div class="elements__card">
                     <img class="elements__image" src="./image/Photo/pascal-meier-zwW0p5WQWjA-unsplash.jpg" alt="Фото улиц города">
                     <div class="elements__description">
                         <h2 class="elements__description-title">Городской пейзаж</h2>
-                        <button type="button" class="elements__description-button"></button>
+                        <button type="button" class="elements__like-button"></button>
                     </div>
                 </div>
                 <div class="elements__card">
                     <img class="elements__image" src="./image/Photo/rodrigo-rodrigues-wolf-r-t-naIVVvYbDzU-unsplash.jpg" alt="Домбай">
                     <div class="elements__description">
                         <h2 class="elements__description-title">Велосипед на берегу</h2>
-                        <button type="button" class="elements__description-button"></button>
+                        <button type="button" class="elements__like-button"></button>
                     </div>
                 </div>
         </section>
-        <script></script>
-    </body>
-    <footer>
-        <div class="footer">
-            <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
+        <footer>
+            <div class="footer">
+                <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
+            </div>
+        </footer>
+        <!-- Попап редактировать профиль -->
+        <div class="popup popup-profile">
+            <div class="popup__container">
+                <button type="button" class="popup__button-close"></button>
+                <form class="popup__form" name="profileform">
+                    <h2 class="popup__name">Редактировать профиль</h2>
+                    <input type="text" class="popup__input popup__input_type_name" name="name">
+                    <input type="text" class="popup__input popup__input_type_subtitle" name="subtitle">
+                    <button type="submit" class="popup__submit-button">Сохранить</button>
+                </form>
+            </div>
         </div>
-    </footer>
+        <script src="./script.js"></script>
+    </body>
 </html>
