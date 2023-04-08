@@ -10,3 +10,14 @@
     padding-right: 29px;
     padding-bottom: 46px;
 }
+
+@media screen and (max-width: 620px) {
+    .popup__name {
+        width: 238px;
+        font-size: 18px;
+        line-height: 22px;
+        padding-right: 0px;
+        padding-bottom: 73px;
+        
+    }
+}
