@@ -18,11 +18,11 @@ const subtitleInput = document.querySelector('.popup__input_type_subtitle');
 // Попап редактировать профиль //
 
 function openEditePopup(popup) {
-    popup.classList.add('popup_opened');
+    popup.classList.add('popup__opened');
 }
   
 function closePopup(popup) {
-    popup.classList.remove('popup_opened');
+    popup.classList.remove('popup__opened');
 }
   
 function handleFormSubmit(evt) {

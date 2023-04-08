@@ -1,0 +1,11 @@
+.popup__container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    
+    margin: 0;
+    padding: 0;
+    z-index: 2;
+}
