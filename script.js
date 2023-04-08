@@ -5,7 +5,7 @@ const nameProfile = profile.querySelector('.profile__name');
 const subtitleProfile = profile.querySelector('.profile__subtitle');
 
 const elements = document.querySelector('.elements');
-const likeButton = elements.querySelector('.elements__like-button');
+const likeButtons = elements.querySelectorAll('.elements__like-button');
 
 const popup = main.querySelector('.popup');
 const editProfile = document.querySelector('.popup-profile');
@@ -50,8 +50,10 @@ addEventListeners();
 
 // Кнопка нажатия на сердечко//
 
-function toggleLikeButton() {
-    likeButton.classList.toggle('elements__like-button_active');
-};
+function toggleLikeButton(event) {
+    event.target.classList.toggle('elements__like-button_active');
+}
   
-likeButton.addEventListener('click', toggleLikeButton);
+likeButtons.forEach(function(button) {
+    button.addEventListener('click', toggleLikeButton);
+});
