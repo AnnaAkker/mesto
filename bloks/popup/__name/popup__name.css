@@ -8,7 +8,8 @@
     
     margin: 0;
     padding-right: 29px;
-    padding-bottom: 46px;
+    padding-bottom: 48px;
+    padding-top: 35px;
 }
 
 @media screen and (max-width: 620px) {
@@ -16,8 +17,8 @@
         width: 238px;
         font-size: 18px;
         line-height: 22px;
+        padding-top: 25px;
         padding-right: 0px;
         padding-bottom: 73px;
-        
     }
 }
