@@ -27,7 +27,7 @@ function handleFormSubmit(evt) {
     subtitleProfile.textContent = subtitleInput.value;
     closePopup(popup);
 }
-  
+
 
 popupform.addEventListener('submit', handleFormSubmit);
 
