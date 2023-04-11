@@ -9,7 +9,7 @@
 
 @media screen and (max-width: 620px) {
     .profile__block {
-        padding-top: 30px;
-        column-gap: 11px;
+        padding-top: 28px;
+        column-gap: 10px;
     }
 }
