@@ -1,5 +1,5 @@
 .elements__like-button {
-    background-image: url(../../../image/Button/Like_disabled.svg);
+    background-image: url(../../../images/Button/Like_disabled.svg);
     background-color: transparent;
     background-repeat: no-repeat;
     min-width: 22px;
@@ -13,5 +13,5 @@
 }
 
 .elements__like-button:active {
-    background-image: url(../../../image/Button/Like_active.svg);
+    background-image: url(../../../images/Button/Like_active.svg);
 }
