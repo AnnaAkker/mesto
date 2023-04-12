@@ -2,7 +2,7 @@
     width: 353px;
     height: 27px;
     border: none;
-    border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     align-items: center;
     font-style: normal;
     font-weight: 400;
@@ -15,6 +15,8 @@
 
     color: #000000;
 }
+
+/* Простите, что замучала вас своей невниметльностью Т__Т */
 
 .popup__input:last-of-type {
     margin-bottom: 49px;
