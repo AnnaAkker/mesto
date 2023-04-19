@@ -5,11 +5,19 @@ const nameProfile = profile.querySelector('.profile__name');
 const subtitleProfile = profile.querySelector('.profile__subtitle');
 
 const popup = main.querySelector('.popup');
+
+const EditePopup = document.querySelector('.EditePopup');
 const editProfileButton = document.querySelector('.profile__button-edit');
 const closeProfileButton = document.querySelector('.popup__button-close');
 const popupform = document.querySelector('.popup__form');
+
 const nameInput = document.querySelector('.popup__input_type_name');
 const subtitleInput = document.querySelector('.popup__input_type_subtitle');
+
+const CardPopup = document.querySelector('.CardPopup');
+const titleCardPopup = document.querySelector('.popup__input_type_description_title');
+const imageCardPopup = document.querySelector('.popup__input_type_image');
+
 
 // Попап редактировать профиль //
 
@@ -40,3 +48,5 @@ editProfileButton.addEventListener('click', function() {
 closeProfileButton.addEventListener('click', function() {
     closePopup(popup);
 });
+
+
