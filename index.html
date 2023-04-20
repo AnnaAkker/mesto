@@ -79,7 +79,7 @@
             <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
         </footer>
         <!-- Попап "Редактировать профиль" -->
-        <div class="popup EditePopup">
+        <div class="popup popup_edit-profile">
             <div class="popup__container">
                 <button type="button" class="popup__button-close"></button>
                 <form class="popup__form" name="profileform">
@@ -91,23 +91,34 @@
             </div>
         </div>
         <!--  Попап "Добавить карточку"-->
-        <!-- <div class="popup CardPopup">
+        <div class="popup popup_add-card">
             <div class="popup__container">
                 <button type="button" class="popup__button-close"></button>
                 <form class="popup__form" name="cardform">
                     <h2 class="popup__name">Новое место</h2>
-                    <input type="text" class="popup__input popup__input_type_description_title" name="title">
-                    <input type="text" class="popup__input popup__input_type_image" name="image">
+                    <input type="text" class="popup__input popup__input_type_description-title" name="title" placeholder="Название">
+                    <input type="text" class="popup__input popup__input_type-url" name="url" placeholder="Ссылка на картинку">
                     <button type="submit" class="popup__submit-button">Создать</button>
                 </form>
             </div>
-        </div> -->
-        <!-- Попап "Открыть картинку"
-        <div class="popup">
-            <div class="popup__container-image">
+        </div>
+        <!-- Попап "Открыть картинку" -->
+        <!-- <div class="popup">
+            <div class="popup__container">
                 <button type="button" class="popup__button-close"></button>             
             </div>
         </div> -->
+        <!-- <template id="cardElements">
+            <div class="elements__card">
+                <button type="button" class="elements__trash-button"></button>
+                <img class="elements__image" src="#" alt="#">
+                    <div class="elements__description">
+                        <h2 class="elements__description-title"></h2>
+                        <button type="button" class="elements__like-button"></button>
+                     </div>
+                </div>
+            </div>
+        </template> -->
         <script src="./scripts/index.js"></script>
     </body>
 </html>
