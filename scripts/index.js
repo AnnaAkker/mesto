@@ -20,6 +20,10 @@ const cardPopupForm = CardPopup.querySelector('.popup__form');
 const titleCardPopup = CardPopup.querySelector('.popup__input_type_description-title');
 const urlCardPopup = CardPopup.querySelector('.popup__input_type-url');
 
+const imagePopup = document.querySelector('.popup_open-image');
+const image = document.querySelector('.popup__image-full');
+const imageSignature = document.querySelector('.popup__image-signature');
+
 const cards = document.querySelector('#cards').content;
 const elementsCard = document.querySelector('.elements');
 
@@ -119,6 +123,13 @@ function createCard(item) {
   // Кнопка лайка //
 
   likeElementsButton.addEventListener('click', () => likeElementsButton.classList.toggle('elements__like-button_active'));
+  
+  imageElements.addEventListener('click', () => {
+    image.src =  item.link;
+    image.alt =  item.name;
+    imageSignature.textContent =  item.name;
+    openPopup(imagePopup);
+  });
 
   return cardItem;
 

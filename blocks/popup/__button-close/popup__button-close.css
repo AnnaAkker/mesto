@@ -9,11 +9,11 @@
     height: 32px;
     border: none;
     padding: 0;
+    cursor: pointer;
 }
 
 .popup__button-close:hover {
     opacity: 0.6;
-    cursor: pointer;
 }
 
 @media screen and (max-width: 620px) {
