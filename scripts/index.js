@@ -107,12 +107,9 @@ function createCard(item) {
   const trashElementsButton = cardItem.querySelector('.elements__trash-button');
   const imageElements = cardItem.querySelector('.elements__image');
   const likeElementsButton = cardItem.querySelector('.elements__like-button');
-  // const descriptionElements = cardItem.querySelector('.elements__description-title');
 
   imageElements.src = item.link;
   imageElements.alt = item.name;
-  // descriptionElements.textContent = item.name;
-
   cardItem.querySelector('.elements__description-title').textContent = item.name;
 
   // Кнопка удаления карточки //
@@ -144,14 +141,11 @@ cardPopupForm.addEventListener('submit', (evt) => {
 
   evt.target.reset();
 });
- 
-// cardPopupForm.addEventListener('submit', (evt) => {
-//   evt.preventDefault();
-//   const newCard = {name: titleCardPopup.value, link: urlCardPopup.value};
-//   titleCardPopup.value = '';
-//   urlCardPopup.value = '';
-//   elementsCard.prepend(createCard(newCard));
-//   closePopup(CardPopup);
-// });
 
+// Функция для открытия фото //
+
+function openimageElements(item) {
+  imageElements.src = item.link;
+  imageElements.alt = item.name;
+}
 
