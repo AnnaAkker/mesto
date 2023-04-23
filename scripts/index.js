@@ -18,7 +18,7 @@ const cardPopupForm = cardPopup.querySelector('.popup__form');
 const titleCardPopup = cardPopup.querySelector('.popup__input_type_description-title');
 const urlCardPopup = cardPopup.querySelector('.popup__input_type-url');
 
-const imagePopup = document.querySelector('.popup_open-image');
+const imagePopup = document.querySelector('.popup_open-images');
 const photoImagePopup = document.querySelector('.popup__image-full');
 const signatureImagePopup = document.querySelector('.popup__image-signature');
 
