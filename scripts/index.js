@@ -3,17 +3,15 @@ const profile = document.querySelector('.profile');
 const nameProfile = profile.querySelector('.profile__name');
 const subtitleProfile = profile.querySelector('.profile__subtitle');
 
-
-const popupElements = document.querySelector('.popup');
 const closeButtonList = document.querySelectorAll('.popup__button-close');
 
 const addCardButton = document.querySelector('.profile__button-add');
 
-const ProfilePopup = document.querySelector('.popup_edit-profile');
+const profilePopup = document.querySelector('.popup_edit-profile');
 const editButtonProfilePopup = document.querySelector('.profile__button-edit');
-const formProfilePopup = ProfilePopup.querySelector('.popup__form');
-const nameInputProfilePopup = ProfilePopup.querySelector('.popup__input_type_name');
-const subtitleInputProfilePopup = ProfilePopup.querySelector('.popup__input_type_subtitle');
+const formProfilePopup = profilePopup.querySelector('.popup__form');
+const nameInputProfilePopup = profilePopup.querySelector('.popup__input_type_name');
+const subtitleInputProfilePopup = profilePopup.querySelector('.popup__input_type_subtitle');
 
 const cardPopup = document.querySelector('.popup_add-card');
 const cardPopupForm = cardPopup.querySelector('.popup__form');
@@ -82,14 +80,14 @@ closeButtonList.forEach((element) => {
 editButtonProfilePopup.addEventListener('click', () => {
   nameInputProfilePopup.value = nameProfile.textContent;
   subtitleInputProfilePopup.value =  subtitleProfile.textContent;
-  openPopup(ProfilePopup);
+  openPopup(profilePopup);
 });
 
 formProfilePopup.addEventListener('submit', (evt) => {
   evt.preventDefault();
   nameProfile.textContent = nameInputProfilePopup.value;
   subtitleProfile.textContent = subtitleInputProfilePopup.value;
-  closePopup(ProfilePopup);
+  closePopup(profilePopup);
 });
 
 // Кнопка "Добавить карточку" //
