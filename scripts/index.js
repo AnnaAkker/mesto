@@ -1,3 +1,4 @@
+const popupList = document.querySelectorAll('.popup');
 
 const profile = document.querySelector('.profile');
 const nameProfile = profile.querySelector('.profile__name');
@@ -54,19 +55,30 @@ const initialCards = [
     }
 ]; 
 
-// Общая функция открытия Попапов //
+// Функция закрытия попапа на Escape //
+
+function closePopupEscape(evt) {
+  if (evt.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened');
+    closePopup(popupOpened);
+  }
+};
+
+// Общая функция открытия попапов //
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-}
+  document.addEventListener('keydown', closePopupEscape);
+};
 
-// Общая функция закрытия Попапов //
+// Общая функция закрытия попапов //
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-}
+  document.removeEventListener('keydown', closePopupEscape);
+};
 
-// Закрытие на крестик для всех Попапов //
+// Закрытие на крестик для всех попапов //
 
 closeButtonList.forEach((element) => {
   const popupClose = element.closest('.popup');
@@ -74,6 +86,14 @@ closeButtonList.forEach((element) => {
     closePopup(popupClose)
   });
 });
+
+// Функция закрытия попапа вне формы //
+
+function closePopupOverlay(evt) {
+  if (evt.target === evt.currentTarget.closest('.popup')) {
+    closePopup(evt.currentTarget);
+  }
+};
 
 // Попап "Редактировать профиль" //
 
@@ -142,3 +162,5 @@ initialCards.forEach((item) => {
   const card = createCard(item);
   elementsCards.append(card);
 });
+
+popupList.forEach(element => element.addEventListener('click', closePopupOverlay));
