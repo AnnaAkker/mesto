@@ -16,8 +16,8 @@ const subtitleInputProfilePopup = profilePopup.querySelector('.popup__input_type
 
 const cardPopup = document.querySelector('.popup_add-card');
 const cardPopupForm = cardPopup.querySelector('.popup__form');
-const titleCardPopup = cardPopup.querySelector('.popup__input_type_description-title');
-const urlCardPopup = cardPopup.querySelector('.popup__input_type-url');
+const titleCardPopup = cardPopup.querySelector('.popup__input_type_description_title');
+const urlCardPopup = cardPopup.querySelector('.popup__input_type_url');
 
 const imagePopup = document.querySelector('.popup_open-images');
 const photoImagePopup = document.querySelector('.popup__image-full');
@@ -66,15 +66,15 @@ function closePopupEscape(evt) {
 
 // Общая функция открытия попапов //
 
-function openPopup(popup) {
-  popup.classList.add('popup_opened');
+function openPopup(popupList) {
+  popupList.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupEscape);
 };
 
 // Общая функция закрытия попапов //
 
-function closePopup(popup) {
-  popup.classList.remove('popup_opened');
+function closePopup(popupList) {
+  popupList.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopupEscape);
 };
 
@@ -164,3 +164,4 @@ initialCards.forEach((item) => {
 });
 
 popupList.forEach(element => element.addEventListener('click', closePopupOverlay));
+
