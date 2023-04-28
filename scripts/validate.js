@@ -23,7 +23,7 @@ function toggleButtonState (validConfig, inputList, buttonElement) {
         buttonElement.setAttribute('disabled', true);
     } else {
         buttonElement.classList.remove(validConfig.inactiveButtonClass);
-        buttonElement.removeAttribute('disabled', true);
+        buttonElement.removeAttribute('disabled');
     }
 };
 
