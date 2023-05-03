@@ -1,12 +1,19 @@
 .popup__error {
     width: 358px;
     min-height: 30px;
-    display: none;
+    /* display: none; */
+    position: absolute;
+    left: 38px;
+
 
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
-    line-height: 15px;
+    line-height: 14px;
 
     color: #FF0000;
-};
+}
+
+.popup__error:last-of-type {
+    bottom: 90px;
+}
