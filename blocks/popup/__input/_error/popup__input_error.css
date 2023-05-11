@@ -14,3 +14,15 @@
 .popup__input_error:last-of-type {
     margin-bottom: 30px;
 }
+
+@media screen and (max-width: 620px) {
+    .popup__input_error {
+        width: 238px;
+        margin-bottom: 31px;
+    }
+
+    .popup__input_error:last-of-type {
+        margin-bottom: 16px;
+    }
+
+}
