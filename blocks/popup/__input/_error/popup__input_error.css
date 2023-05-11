@@ -1,5 +1,4 @@
 .popup__input_error {
-    width: 358px;
     min-height: 30px;
     position: absolute;
     left: 38px;
@@ -12,6 +11,6 @@
     color: #FF0000;
 }
 
-.popup__error:last-of-type {
+.popup__input_error:last-of-type {
     bottom: 90px;
 }
