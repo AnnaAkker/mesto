@@ -18,11 +18,11 @@
 @media screen and (max-width: 620px) {
     .popup__input {
         width: 238px;
-        margin-bottom: 31px;
+        margin-bottom: 10px;
     }
 
-    .popup__input:last-of-type {
+    /* .popup__input:last-of-type {
         margin-bottom: 16px;
-    }
+    } */
 
 }
