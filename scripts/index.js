@@ -16,7 +16,7 @@ const subtitleInputProfilePopup = profilePopup.querySelector('.popup__input_type
 
 const cardPopup = document.querySelector('.popup_add-card');
 const cardPopupForm = cardPopup.querySelector('.popup__form');
-const titleCardPopup = cardPopup.querySelector('.popup__input_type_description_title');
+const titleCardPopup = cardPopup.querySelector('.popup__input_type_title');
 const urlCardPopup = cardPopup.querySelector('.popup__input_type_url');
 
 const imagePopup = document.querySelector('.popup_open-images');
