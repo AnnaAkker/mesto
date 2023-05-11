@@ -51,18 +51,6 @@ const isValid = (validConfig, formObject, inputObject, inputList) => {
   });
 };
 
-// Функция состояния кнопки //
-
-function toggleButtonState(validConfig, inputList, buttonElement) {
-  if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(validConfig.disabledButtonClass);
-    buttonElement.setAttribute('disabled', true);
-  } else {
-    buttonElement.removeAttribute('disabled');
-    buttonElement.classList.remove(validConfig.disabledButtonClass);
-  };
-};
-
 // Функция для добавления обработчиков событий на все поля формы //
 
 const setEventListeners = (validConfig, formObject) => {
@@ -85,6 +73,19 @@ const setEventListeners = (validConfig, formObject) => {
   });
 };
 
+// Функция состояния кнопки //
+
+function toggleButtonState(validConfig, inputList, buttonElement) {
+  if (hasInvalidInput(inputList)) {
+    buttonElement.classList.add(validConfig.disabledButtonClass);
+    buttonElement.setAttribute('disabled', true);
+  } else {
+    buttonElement.removeAttribute('disabled');
+    buttonElement.classList.remove(validConfig.disabledButtonClass);
+  };
+};
+
+
 const enableValidation = (validConfig) => {
   const formsList = Array.from(document.querySelectorAll(validConfig.formSelector));
   formsList.forEach((formObject) => {
@@ -93,6 +94,7 @@ const enableValidation = (validConfig) => {
 };
   
 enableValidation(validConfig);
+
 
 
 // // Функция валидации //
