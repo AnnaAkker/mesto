@@ -164,3 +164,4 @@ initialCards.forEach((item) => {
 });
 
 popupList.forEach(element => element.addEventListener('click', closePopupOverlay));
+

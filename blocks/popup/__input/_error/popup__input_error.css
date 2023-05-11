@@ -1,11 +1,9 @@
-.popup__error {
+.popup__input_error {
     width: 358px;
     min-height: 30px;
-    /* display: none; */
     position: absolute;
     left: 38px;
-
-
+    
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
