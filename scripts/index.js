@@ -1,3 +1,6 @@
+import initialCards from './constants.js';
+import Card from './Сard.js';
+
 const popupList = document.querySelectorAll('.popup');
 
 const profile = document.querySelector('.profile');
@@ -23,37 +26,8 @@ const imagePopup = document.querySelector('.popup_open-images');
 const photoImagePopup = document.querySelector('.popup__image-full');
 const signatureImagePopup = document.querySelector('.popup__image-signature');
 
-const cards = document.querySelector('#cards').content;
 const elementsCards = document.querySelector('.elements');
-
-// Массив карточек //
-
-const initialCards = [
-    {
-      name: 'Лестница',
-      link: './images/Photo/jack-dong-G9TVFHePumE-unsplash.jpg'
-    },
-    {
-      name: 'Вид с берега',
-      link: './images/Photo/kevin-charit-W2MjH-G_lWY-unsplash.jpg'
-    },
-    {
-      name: 'Монохром пейзаж',
-      link: './images/Photo/lesia-cvh_ynQLHho-unsplash.jpg'
-    },
-    {
-      name: 'Станция метро',
-      link: './images/Photo/markus-spiske-hMAXV7GGe48-unsplash.jpg'
-    },
-    {
-      name: 'Городской пейзаж',
-      link: './images/Photo/pascal-meier-zwW0p5WQWjA-unsplash.jpg'
-    },
-    {
-      name: 'Велосипед на берегу',
-      link: './images/Photo/rodrigo-rodrigues-wolf-r-t-naIVVvYbDzU-unsplash.jpg'
-    }
-]; 
+const cardTemplateSelector = '#cards';
 
 // Функция закрытия попапа на Escape //
 
@@ -117,51 +91,40 @@ addCardButton.addEventListener('click', () => {
 });
 
 // Форма для добавления карточек //
+
 cardPopupForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  const infoCardPopup = {name: titleCardPopup.value, link: urlCardPopup.value};
-  elementsCards.prepend(createCard(infoCardPopup));
+  const infoCardPopup = { name: titleCardPopup.value, link: urlCardPopup.value };
+  const card = new Card(infoCardPopup, cardTemplateSelector, photoImagePopup, signatureImagePopup);
+  const cardElement = card.generateCard();
+  elementsCards.prepend(cardElement);
   closePopup(cardPopup);
   evt.target.reset();
 });
 
-// Создание карточек // 
+// Функция открытия фото //
 
-function createCard(item) {
-  const cardItem = cards.querySelector('.elements__card').cloneNode(true);
-  const trashButtonCardItem = cardItem.querySelector('.elements__trash-button');
-  const imageCardItem = cardItem.querySelector('.elements__image');
-  const likeButtonCardItem = cardItem.querySelector('.elements__like-button');
-  imageCardItem.src = item.link;
-  imageCardItem.alt = item.name;
-  cardItem.querySelector('.elements__description-title').textContent = item.name;
+function openImage(item) {
+  photoImagePopup.src =  item.link;
+  photoImagePopup.alt =  item.name;
+  signatureImagePopup.textContent =  item.name;
+  openPopup(imagePopup);
+};
 
-  // Кнопка удаления карточки //
-
-  trashButtonCardItem.addEventListener('click', (evt) => evt.target.closest('.elements__card').remove());
-
-  // Кнопка лайка //
-
-  likeButtonCardItem.addEventListener('click', () => likeButtonCardItem.classList.toggle('elements__like-button_active'));
+// Слушатель открытия фото //
   
-  // Увеличение фото //
-
-  imageCardItem.addEventListener('click', () => {
-    photoImagePopup.src =  item.link;
-    photoImagePopup.alt =  item.name;
-    signatureImagePopup.textContent =  item.name;
-    openPopup(imagePopup);
-  });
-
-  return cardItem;
+function addImageClickListener(image, item) {
+  image.addEventListener('click', () => openImage(item));
 };
 
 // Подключение карточек //
 
 initialCards.forEach((item) => {
-  const card = createCard(item);
-  elementsCards.append(card);
+  const card = new Card(item, cardTemplateSelector, photoImagePopup, signatureImagePopup);
+  const cardElement = card.generateCard();
+  elementsCards.append(cardElement);
+  const imageCardItem = cardElement.querySelector('.elements__image');
+  addImageClickListener(imageCardItem, item);
 });
 
 popupList.forEach(element => element.addEventListener('click', closePopupOverlay));
-
