@@ -73,7 +73,7 @@ function closePopupOverlay(evt) {
 
 editButtonProfilePopup.addEventListener('click', () => {
   nameInputProfilePopup.value = nameProfile.textContent;
-  subtitleInputProfilePopup.value =  subtitleProfile.textContent;
+  subtitleInputProfilePopup.value = subtitleProfile.textContent;
   openPopup(profilePopup);
 });
 
@@ -105,17 +105,17 @@ cardPopupForm.addEventListener('submit', (evt) => {
 // Функция открытия фото //
 
 function openImage(item) {
-  photoImagePopup.src =  item.link;
-  photoImagePopup.alt =  item.name;
-  signatureImagePopup.textContent =  item.name;
+  photoImagePopup.src = item.link;
+  photoImagePopup.alt = item.name;
+  signatureImagePopup.textContent = item.name;
   openPopup(imagePopup);
-};
+}
 
 // Слушатель открытия фото //
   
 function addImageClickListener(image, item) {
   image.addEventListener('click', () => openImage(item));
-};
+}
 
 // Подключение карточек //
 
@@ -128,3 +128,83 @@ initialCards.forEach((item) => {
 });
 
 popupList.forEach(element => element.addEventListener('click', closePopupOverlay));
+
+// const validConfig = {
+//   formSelector: '.popup__form',
+//   inputSelector: '.popup__input',
+//   submitButtonSelector: '.popup__submit-button',
+//   disabledButtonClass: 'popup__submit-button_disabled',
+//   inputErrorClass: 'popup__input_invalid',
+//   errorClass: 'popup__input-error'
+// };
+
+// const formValidator = new formValidatior(validConfig);
+// formValidator.enableValidation();
+
+
+
+// class formValidatior {
+//   constructor(validConfig) {
+//     this._formSelector = validConfig.formSelector;
+//     this._inputSelector = validConfig.inputSelector;
+//     this._submitButtonSelector = validConfig.submitButtonSelector;
+//     this._disabledButtonClass = validConfig.disabledButtonClass;
+//     this._inputErrorClass = validConfig.inputErrorClass;
+//     this._errorClass = validConfig.errorClass;
+//   };
+
+//   _showInputError(formObject, inputObject, errorMessage) {
+//     const errorElement = formObject.querySelector(.${inputObject.id}-error);
+//     inputObject.classList.add(this._errorClass);
+//     errorElement.textContent = errorMessage;
+//     inputObject.classList.add(this._inputErrorClass);
+//   };
+
+//   _hideInputError(formObject, inputObject) {
+//     const errorElement = formObject.querySelector(.${inputObject.id}-error);
+//     inputObject.classList.remove(this._errorClass);
+//     errorElement.textContent = '';
+//     inputObject.classList.remove(this._inputErrorClass);
+//   };
+
+//   _checkInputValidity(formObject, inputObject) {
+//     if (!inputObject.validity.valid) {
+//     this._showInputError(formObject, inputObject, inputObject.validationMessage);
+//     } else {
+//     this._hideInputError(formObject, inputObject);
+//     };
+//   };
+
+//   _toggleButtonState(formObject) {
+//       const inputList = Array.from(formObject.querySelectorAll(this._inputSelector));
+//       const buttonElement = formObject.querySelector(this._submitButtonSelector);
+//       const hasInvalidInput = inputList.some((inputObject) => !inputObject.validity.valid);
+
+//       buttonElement.disabled = hasInvalidInput;
+//       buttonElement.classList.toggle(this._disabledButtonClass, hasInvalidInput);
+//   };
+
+//   _setEventListeners(formObject) {
+//     const inputList = Array.from(formObject.querySelectorAll(this._inputSelector));
+//     inputList.forEach((inputObject) => {
+//       inputObject.addEventListener('input', () => {
+//         this._checkInputValidity(formObject, inputObject);
+//         this._toggleButtonState(formObject);
+//       });
+//     });
+//   };
+
+  
+//   formObject.addEventListener('submit', (evt) => {
+//     evt.preventDefault();
+//     this._toggleButtonState(formObject);
+//   });
+  
+//   enableValidation() {
+//     const formsList = Array.from(document.querySelectorAll(this._formSelector));
+//     formsList.forEach((formObject) => {
+//     formObject.noValidate = true;
+//     this._setEventListeners(formObject);
+//     });
+//   };
+// };
