@@ -68,8 +68,12 @@ class FormValidator {
         evt.preventDefault();
       });
       this._setEventListeners(formObject);
+
+      const buttonElement = formObject.querySelector(this._submitButtonSelector);
+      buttonElement.disabled = true;
+      buttonElement.classList.add(this._disabledButtonClass);
     });
-  }
+  };
 };
 
 const validConfig = {

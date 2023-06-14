@@ -25,7 +25,7 @@ export default class Card {
     this._photoImagePopup.src = this._link;
     this._photoImagePopup.alt = this._name;
     this._signatureImagePopup.textContent = this._name;
-    openPopup(imagePopup);
+    openPopup(this._photoImagePopup);
   }
 
   _setEventListeners() {
@@ -49,4 +49,4 @@ export default class Card {
 
     return this._cardElement;
   }
-};
+}
