@@ -1,10 +1,12 @@
 export default class Card {
-  constructor(cardsData, templateSelector, photoImagePopup, signatureImagePopup) {
+  constructor(cardsData, templateSelector, photoImagePopup, signatureImagePopup, openPopup, imagePopup) {
     this._name = cardsData.name;
     this._link = cardsData.link;
     this._templateSelector = templateSelector;
     this._photoImagePopup = photoImagePopup;
     this._signatureImagePopup = signatureImagePopup;
+    this._openPopup = openPopup;
+    this._imagePopup = imagePopup;
   }
 
   _getTemplate() {
@@ -25,7 +27,7 @@ export default class Card {
     this._photoImagePopup.src = this._link;
     this._photoImagePopup.alt = this._name;
     this._signatureImagePopup.textContent = this._name;
-    openPopup(this._photoImagePopup);
+    this._openPopup(this._imagePopup);
   }
 
   _setEventListeners() {

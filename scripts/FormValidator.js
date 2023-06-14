@@ -1,4 +1,4 @@
-class FormValidator {
+export default class FormValidator {
   constructor(validConfig) {
     this._formSelector = validConfig.formSelector;
     this._inputSelector = validConfig.inputSelector;
@@ -75,15 +75,3 @@ class FormValidator {
     });
   };
 };
-
-const validConfig = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__submit-button',
-  disabledButtonClass: 'popup__submit-button_disabled',
-  inputErrorClass: 'popup__input_invalid',
-  errorClass: 'popup__input-error'
-};
-
-const formValidator = new FormValidator(validConfig);
-formValidator.enableValidation();
