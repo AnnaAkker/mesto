@@ -1,19 +1,18 @@
 import FormValidator from './FormValidator.js';
-import initialCards from './constants.js'
+import initialCards from './constants.js';
 import Card from './Card.js';
-
-const popupList = document.querySelectorAll('.popup');
 
 const profile = document.querySelector('.profile');
 const nameProfile = profile.querySelector('.profile__name');
 const subtitleProfile = profile.querySelector('.profile__subtitle');
+
+const popupList = document.querySelectorAll('.popup');
 
 const closeButtonList = document.querySelectorAll('.popup__button-close');
 
 const addCardButton = document.querySelector('.profile__button-add');
 
 const profilePopup = document.querySelector('.popup_edit-profile');
-const editButtonProfilePopup = document.querySelector('.profile__button-edit');
 const formProfilePopup = profilePopup.querySelector('.popup__form');
 const nameInputProfilePopup = profilePopup.querySelector('.popup__input_type_name');
 const subtitleInputProfilePopup = profilePopup.querySelector('.popup__input_type_subtitle');
@@ -38,11 +37,14 @@ const validConfig = {
   submitButtonSelector: '.popup__submit-button',
   disabledButtonClass: 'popup__submit-button_disabled',
   inputErrorClass: 'popup__input_invalid',
-  errorClass: 'popup__input-error'
+  errorClass: 'popup__input-error',
 };
 
-const formValidator = new FormValidator(validConfig);
-formValidator.enableValidation();
+const formValidatorProfilePopup = new FormValidator(validConfig, formProfilePopup);
+formValidatorProfilePopup.enableValidation();
+
+const formValidatorCardPopup = new FormValidator(validConfig, cardPopupForm);
+formValidatorCardPopup.enableValidation();
 
 // Функция закрытия попапа при нажатии на клавишу Escape //
 
@@ -86,6 +88,7 @@ function closePopupOverlay(evt) {
 
 // Попап "Редактировать профиль" //
 
+const editButtonProfilePopup = document.querySelector('.profile__button-edit');
 editButtonProfilePopup.addEventListener('click', () => {
   nameInputProfilePopup.value = nameProfile.textContent;
   subtitleInputProfilePopup.value = subtitleProfile.textContent;
@@ -117,7 +120,14 @@ cardPopupForm.addEventListener('submit', (evt) => {
 });
 
 function createCardElement(cardsData) {
-  const card = new Card(cardsData, cardTemplateSelector, photoImagePopup, signatureImagePopup, openPopup, imagePopup);
+  const card = new Card(
+    cardsData,
+    cardTemplateSelector,
+    photoImagePopup,
+    signatureImagePopup,
+    openPopup,
+    imagePopup
+  );
   return card.generateCard();
 }
 
@@ -128,11 +138,9 @@ function addCardToContainer(cardElement) {
 // Подключение начальных карточек //
 
 initialCards.forEach((item) => {
-  const card = new Card(item, cardTemplateSelector, photoImagePopup, signatureImagePopup, openPopup, imagePopup);
-  const cardElement = card.generateCard();
-  elementsCards.prepend(cardElement);
+  const cardElement = createCardElement(item);
+  addCardToContainer(cardElement);
 });
 
 // Закрытие попапов при клике вне формы //
-
 popupList.forEach((popup) => popup.addEventListener('click', closePopupOverlay));

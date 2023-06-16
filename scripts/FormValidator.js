@@ -1,77 +1,67 @@
 export default class FormValidator {
-  constructor(validConfig, formSelector) {
-    this._formSelector = formSelector;
+  constructor(validConfig, form) {
+    this._form = form;
     this._inputSelector = validConfig.inputSelector;
     this._submitButtonSelector = validConfig.submitButtonSelector;
     this._disabledButtonClass = validConfig.disabledButtonClass;
     this._inputErrorClass = validConfig.inputErrorClass;
     this._errorClass = validConfig.errorClass;
-  };
+    this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
+    this._buttonElement = this._form.querySelector(this._submitButtonSelector);
+  }
 
-  // Показ ошибки //
-
-  _showInputError(formObject, inputObject, errorMessage) {
-    const errorElement = formObject.querySelector(`.${inputObject.id}-error`);
-    inputObject.classList.add(this._errorClass);
-    errorElement.textContent = errorMessage;
+  _showInputError(inputObject, errorMessage) {
+    const errorElement = this._form.querySelector(`.${inputObject.id}-error`);
     inputObject.classList.add(this._inputErrorClass);
-  };
-  
-  // Скрытие ошибки // 
+    errorElement.textContent = errorMessage;
+    errorElement.classList.add(this._errorClass);
+  }
 
-  _hideInputError(formObject, inputObject) {
-    const errorElement = formObject.querySelector(`.${inputObject.id}-error`);
-    inputObject.classList.remove(this._errorClass);
-    errorElement.textContent = '';
+  _hideInputError(inputObject) {
+    const errorElement = this._form.querySelector(`.${inputObject.id}-error`);
     inputObject.classList.remove(this._inputErrorClass);
-  };
+    errorElement.textContent = '';
+    errorElement.classList.remove(this._errorClass);
+  }
 
-  // Валидность инпутов //
-
-  _checkInputValidity(formObject, inputObject) {
+  _checkInputValidity(inputObject) {
     if (!inputObject.validity.valid) {
-      this._showInputError(formObject, inputObject, inputObject.validationMessage);
+      this._showInputError(inputObject, inputObject.validationMessage);
     } else {
-      this._hideInputError(formObject, inputObject);
+      this._hideInputError(inputObject);
     }
-  };
+  }
 
-  _toggleButtonState(formObject) {
-    const inputList = Array.from(formObject.querySelectorAll(this._inputSelector));
-    const buttonElement = formObject.querySelector(this._submitButtonSelector);
-    const hasInvalidInput = inputList.some((inputObject) => !inputObject.validity.valid);
+  _toggleButtonState() {
+    const hasInvalidInput = this._inputList.some((inputObject) => !inputObject.validity.valid);
 
-    buttonElement.disabled = hasInvalidInput;
-    buttonElement.classList.toggle(this._disabledButtonClass, hasInvalidInput);
-  };
+    this._buttonElement.disabled = hasInvalidInput || !this._form.checkValidity();
+    this._buttonElement.classList.toggle(
+      this._disabledButtonClass,
+      hasInvalidInput || !this._form.checkValidity()
+    );
+  }
 
-  _setEventListeners(formObject) {
-    const inputList = Array.from(formObject.querySelectorAll(this._inputSelector));
-
-    inputList.forEach((inputObject) => {
+  _setEventListeners() {
+    this._inputList.forEach((inputObject) => {
       inputObject.addEventListener('input', () => {
-        this._checkInputValidity(formObject, inputObject);
-        this._toggleButtonState(formObject);
+        this._checkInputValidity(inputObject);
+        this._toggleButtonState();
       });
     });
 
-    formObject.addEventListener('submit', (evt) => {
+    this._form.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      this._toggleButtonState(formObject);
+      this._toggleButtonState();
     });
-  };
+  }
 
   enableValidation() {
-    const formsList = Array.from(document.querySelectorAll(this._formSelector));
-    formsList.forEach((formObject) => {
-      formObject.addEventListener('submit', (evt) => {
-        evt.preventDefault();
-      });
-      this._setEventListeners(formObject);
+    this._setEventListeners();
 
-      const buttonElement = formObject.querySelector(this._submitButtonSelector);
-      buttonElement.disabled = true;
-      buttonElement.classList.add(this._disabledButtonClass);
-    });
-  };
-};
+    this._buttonElement.disabled = true;
+    this._buttonElement.classList.add(this._disabledButtonClass);
+
+    this._toggleButtonState();
+  }
+}
