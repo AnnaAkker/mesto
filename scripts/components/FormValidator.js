@@ -35,12 +35,10 @@ export default class FormValidator {
   _toggleButtonState() {
     const hasInvalidInput = this._inputList.some((inputObject) => !inputObject.validity.valid);
 
-    this._buttonElement.disabled = hasInvalidInput || !this._form.checkValidity();
-    this._buttonElement.classList.toggle(
-      this._disabledButtonClass,
-      hasInvalidInput || !this._form.checkValidity()
-    );
-  }
+    this._buttonElement.disabled =  !this._form.checkValidity();
+    this._buttonElement.classList.toggle( this._disabledButtonClass, !this._form.checkValidity()  ); 
+  }  
+  
 
   _setEventListeners() {
     this._inputList.forEach((inputObject) => {
