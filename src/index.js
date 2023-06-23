@@ -1,10 +1,10 @@
-import FormValidator from './scripts/components/FormValidator.js';
-import initialCards from './scripts/utils/constants.js';
-import Card from './scripts/components/Card.js';
-import PopupWithImage from './scripts/components/PopupWithImage.js';
-import Section from './scripts/components/Section.js';
-import UserInfo from './scripts/components/UserInfo.js';
-import PopupWithForm from './scripts/components/PopupWithForm.js';
+import FormValidator from './src/components/FormValidator.js';
+import initialCards from './src/utils/constants.js';
+import Card from './src/components/Card.js';
+import PopupWithImage from './src/components/PopupWithImage.js';
+import Section from './src/components/Section.js';
+import UserInfo from './src/components/UserInfo.js';
+import PopupWithForm from './src/components/PopupWithForm.js';
 
 const closeButtonList = document.querySelectorAll('.popup__button-close');
 
