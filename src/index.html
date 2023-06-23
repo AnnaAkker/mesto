@@ -3,17 +3,17 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./pages/index.css">
+        <!-- <link rel="stylesheet" href="./pages/index.css"> -->
         <title>Mesto Russia</title>
     </head>
     <body class="page">
         <header class="header">
-            <img class="header__logo" src="./images/logo.svg" alt="Логотип Место">
+            <img class="header__logo" src="<%=require('../images/logo.svg')%>" alt="Логотип Место">
         </header>   
         <main>
             <section class="profile">
                 <div class="profile__description">
-                    <img class="profile__image" src="./images/Profile_image.jpg" alt="Фотография в профиле">
+                    <img class="profile__image" src="<%=require('../images/Profile_image.jpg')%>" alt="Фотография в профиле">
                     <div class="profile__block">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
                         <button type="button" class="profile__button-edit"></button>

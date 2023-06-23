@@ -1,3 +1,5 @@
+import '../pages/index.css';
+
 import FormValidator from './components/FormValidator.js';
 import initialCards from './utils/constants.js';
 import Card from './components/Card.js';
@@ -5,14 +7,6 @@ import PopupWithImage from './components/PopupWithImage.js';
 import Section from './components/Section.js';
 import UserInfo from './components/UserInfo.js';
 import PopupWithForm from './components/PopupWithForm.js';
-
-// импорт карточек //
-
-
-
-
-
-//  //
 
 const closeButtonList = document.querySelectorAll('.popup__button-close');
 
