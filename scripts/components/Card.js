@@ -1,18 +1,15 @@
 export default class Card { 
-  constructor(cardsData, templateSelector, photoImagePopup, signatureImagePopup, openPopup, imagePopup) { 
+  constructor(cardsData, cardTemplateSelector, photoImagePopup) { 
     this._cardsData = cardsData;
-    this._name = cardsData.title; 
+    this._title = cardsData.title; 
     this._link = cardsData.link; 
-    this._templateSelector = templateSelector; 
+    this._cardTemplateSelector = cardTemplateSelector; 
     this._photoImagePopup = photoImagePopup; 
-    this._signatureImagePopup = signatureImagePopup; 
-    this._openPopup = openPopup; 
-    this._imagePopup = imagePopup; 
   };
  
   _getTemplate() { 
-    const cardTemplate = document.querySelector(this._templateSelector).content; 
-    return cardTemplate.querySelector('.elements__card').cloneNode(true); 
+
+    return document.querySelector(this._cardTemplateSelector).content.querySelector('.elements__card').cloneNode(true);
   };
  
   _handleDeleteCard = () => { 
@@ -25,12 +22,7 @@ export default class Card {
   };
  
   _handleImageClick = () => {  
-    const cardData = {
-      link: this._link,
-      title: this._title
-    };
-
-    this._openPopup(cardData); 
+    this._photoImagePopup(this._cardsData)
   };
  
   _setEventListeners() { 
@@ -47,8 +39,8 @@ export default class Card {
     this._likeButton = this._cardElement.querySelector('.elements__like-button'); 
  
     this._imageElement.src = this._link; 
-    this._imageElement.alt = this._name; 
-    this._titleElement.textContent = this._name; 
+    this._imageElement.alt = this._title; 
+    this._titleElement.textContent = this._title; 
  
     this._setEventListeners(); 
  
