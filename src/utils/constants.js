@@ -1,5 +1,9 @@
 // Массив карточек //
 
+
+
+
+
 const initialCards = [
     {
       title: 'Лестница',

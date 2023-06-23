@@ -6,6 +6,14 @@ import Section from './components/Section.js';
 import UserInfo from './components/UserInfo.js';
 import PopupWithForm from './components/PopupWithForm.js';
 
+// импорт карточек //
+
+
+
+
+
+//  //
+
 const closeButtonList = document.querySelectorAll('.popup__button-close');
 
 const addCardButton = document.querySelector('.profile__button-add');
