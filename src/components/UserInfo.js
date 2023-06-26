@@ -5,7 +5,7 @@ export default class UserInfo {
     };
 
     getUserInfo() {
-        return {name:this._profileName.textContent, subtitle:this._profileSubtitle.textContent}
+        return {username: this._profileName.textContent, subtitle: this._profileSubtitle.textContent}
     };
 
     setUserInfo(dataUser) {

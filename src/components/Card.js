@@ -8,7 +8,6 @@ export default class Card {
   };
  
   _getTemplate() { 
-
     return document.querySelector(this._cardTemplateSelector).content.querySelector('.elements__card').cloneNode(true);
   };
  

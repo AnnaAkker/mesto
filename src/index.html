@@ -8,12 +8,12 @@
     </head>
     <body class="page">
         <header class="header">
-            <img class="header__logo" src="<%=require('../images/logo.svg')%>" alt="Логотип Место">
+            <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Логотип Место">
         </header>   
         <main>
             <section class="profile">
                 <div class="profile__description">
-                    <img class="profile__image" src="<%=require('../images/Profile_image.jpg')%>" alt="Фотография в профиле">
+                    <img class="profile__image" src="<%=require('./images/Profile_image.jpg')%>" alt="Фотография в профиле">
                     <div class="profile__block">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
                         <button type="button" class="profile__button-edit"></button>
@@ -34,10 +34,10 @@
                 <button type="button" class="popup__button-close"></button>
                 <form class="popup__form" name="profileform" novalidate>
                     <h2 class="popup__name">Редактировать профиль</h2>
-                    <input id='name-input' type="text" class="popup__input popup__input_type_name" name="name" minlength="2" maxlength="40" required>
-                    <span class="name-input-error popup__input-error"></span>
+                    <input id='username-input' type="text" class="popup__input popup__input_type_username" name="username" minlength="2" maxlength="40" required>
+                    <span id="username-input-error" class="popup__input-error"></span>
                     <input id='subtitle-input' type="text" class="popup__input popup__input_type_subtitle" name="subtitle" minlength="2" maxlength="200" required>
-                    <span class="subtitle-input-error popup__input-error"></span>
+                    <span id="subtitle-input-error" class="popup__input-error"></span> 
                     <button type="submit" class="popup__submit-button">Сохранить</button>
                 </form>
             </div>
@@ -49,9 +49,9 @@
                 <form class="popup__form" name="cardform" novalidate>
                     <h2 class="popup__name">Новое место</h2>
                     <input id='title-input' type="text" class="popup__input popup__input_type_title" name="title" placeholder="Название" minlength="2" maxlength="30" required>
-                    <span class="title-input-error popup__input-error"></span>
-                    <input id='link-input' type="link" class="popup__input popup__input_type_url" name="link" placeholder="Ссылка на картинку" required>
-                    <span class="url-input-error popup__input-error"></span>
+                    <span id='title-input-error' class="popup__input-error"></span>
+                    <input id='link-input' type="url" class="popup__input popup__input_type_link" name="link" placeholder="Ссылка на картинку" required>
+                    <span id='link-input-error' class="popup__input-error"></span>
                     <button type="submit" class="popup__submit-button">Создать</button>
                 </form>
             </div>
@@ -75,6 +75,6 @@
                 </div> 
             </div>
         </template>
-        <!-- <script type="module" src="./index.js"></script> -->
+        <script type="module" src="./pages/index.js"></script>
     </body>
 </html>
