@@ -33,14 +33,9 @@ export default class FormValidator {
   }  
 
   _toggleButtonState() { 
-    const isFormValid = this._form.checkValidity();
-    this._buttonElement.disabled = !isFormValid;
-    if (isFormValid) {
-      this._buttonElement.classList.remove(this._disabledButtonClass);
-    } else {
-      this._buttonElement.classList.add(this._disabledButtonClass);
-    }
-  }
+    this._buttonElement.disabled = !this._form.checkValidity();
+    this._buttonElement.classList.toggle(this._disabledButtonClass, !this._form.checkValidity());
+  }   
 
   _setEventListeners() { 
     this._inputList.forEach((inputObject) => { 
