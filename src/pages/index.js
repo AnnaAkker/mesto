@@ -16,8 +16,6 @@ const formProfilePopup = profilePopup.querySelector('.popup__form');
 
 const cardPopup = document.querySelector('.popup_add-card');
 const cardPopupForm = cardPopup.querySelector('.popup__form');
-const titleCardPopup = cardPopup.querySelector('.popup__input_type_title');
-const urlCardPopup = cardPopup.querySelector('.popup__input_type_link');
 
 const elementsList = '.elements';
 const elementsListSelector = '.elements';
@@ -51,6 +49,7 @@ const popupProfile = new PopupWithForm(popupProfileSelector, (dataUser) => {
 });
 
 const popupAddCard = new PopupWithForm(popupCardSelector, (data) => {
+  console.log('Submitted data:', data);
   const cardElement = createCard(data);
   section.addItem(cardElement);
   popupAddCard.close();

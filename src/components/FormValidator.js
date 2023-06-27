@@ -10,7 +10,6 @@ export default class FormValidator {
     this._buttonElement = this._form.querySelector(this._submitButtonSelector); 
   } 
 
- 
   _showInputError(inputObject, errorMessage) {
     const errorElement = this._form.querySelector(`#${inputObject.id}-error`);
     inputObject.classList.add(this._inputErrorClass);
@@ -18,12 +17,12 @@ export default class FormValidator {
     errorElement.classList.add(this._errorClass);
   } 
  
-  _hideInputError(inputObject) { 
+  _hideInputError(inputObject) {
     const errorElement = this._form.querySelector(`#${inputObject.id}-error`);
-    inputObject.classList.remove(this._inputErrorClass); 
-    errorElement.textContent = ''; 
-    errorElement.classList.remove(this._errorClass); 
-  } 
+    inputObject.classList.remove(this._inputErrorClass);
+    errorElement.textContent = '';
+    errorElement.classList.remove(this._errorClass);
+  }
  
   _checkInputValidity(inputObject) { 
     if (!inputObject.validity.valid) { 
@@ -31,15 +30,18 @@ export default class FormValidator {
     } else { 
       this._hideInputError(inputObject); 
     } 
-  } 
- 
+  }  
+
   _toggleButtonState() { 
-    const hasInvalidInput = this._inputList.some((inputObject) => !inputObject.validity.valid); 
-    this._buttonElement.disabled =  !this._form.checkValidity(); 
-    this._buttonElement.classList.toggle( this._disabledButtonClass, !this._form.checkValidity()  );  
-  }   
-   
- 
+    const isFormValid = this._form.checkValidity();
+    this._buttonElement.disabled = !isFormValid;
+    if (isFormValid) {
+      this._buttonElement.classList.remove(this._disabledButtonClass);
+    } else {
+      this._buttonElement.classList.add(this._disabledButtonClass);
+    }
+  }
+
   _setEventListeners() { 
     this._inputList.forEach((inputObject) => { 
       inputObject.addEventListener('input', () => { 
@@ -53,13 +55,11 @@ export default class FormValidator {
       this._toggleButtonState(); 
     }); 
   } 
- 
+
   enableValidation() { 
     this._setEventListeners(); 
- 
     this._buttonElement.disabled = true; 
     this._buttonElement.classList.add(this._disabledButtonClass); 
- 
     this._toggleButtonState(); 
   } 
 };
