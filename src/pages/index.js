@@ -19,14 +19,13 @@ const cardPopupForm = cardPopup.querySelector('.popup__form');
 const titleCardPopup = cardPopup.querySelector('.popup__input_type_title');
 const urlCardPopup = cardPopup.querySelector('.popup__input_type_link');
 
-const elementsListsSelector = document.querySelector('.elements');
+const elementsList = '.elements';
+const elementsListSelector = '.elements';
 const cardTemplateSelector = '#cards';
 
 const popupProfileSelector = '.popup_edit-profile';
 const popupImageSelector = '.popup_open-images';
 const popupCardSelector = '.popup_add-card';
-
-const elementsList = '.elements';
 
 const infoConfig = {
   profileNameSelector: '.profile__name',
@@ -42,17 +41,18 @@ const validConfig = {
   errorClass: 'popup__input-error'
 };
 
-const userInfo = new UserInfo(infoConfig)
+const userInfo = new UserInfo(infoConfig);
 
 const popupImage = new PopupWithImage(popupImageSelector);
 
-const popupProfile = new PopupWithForm(popupProfileSelector, (dataUser) => { 
-  userInfo.setUserInfo(dataUser) 
-  popupProfile.close() 
+const popupProfile = new PopupWithForm(popupProfileSelector, (dataUser) => {
+  userInfo.setUserInfo(dataUser);
+  popupProfile.close();
 });
 
 const popupAddCard = new PopupWithForm(popupCardSelector, (data) => {
-  section.addItem(data);
+  const cardElement = createCard(data);
+  section.addItem(cardElement);
   popupAddCard.close();
 });
 
@@ -65,8 +65,8 @@ formValidatorCardPopup.enableValidation();
 const section = new Section({
   items: initialCards,
   renderer: (element) => {
-    const card = new Card(element, cardTemplateSelector, popupImage.open);
-    return card.generateCard();
+    const cardElement = createCard(element);
+    return cardElement;
   }
 }, elementsList);
 
@@ -76,28 +76,17 @@ popupAddCard.setEventListeners();
 
 editButtonProfilePopup.addEventListener('click', () => {
   popupProfile.setInputValue(userInfo.getUserInfo());
-  popupProfile.open()
+  popupProfile.open();
 });
 
 addCardButton.addEventListener('click', () => {
-  popupAddCard.open()
+  popupAddCard.open();
 });
 
 function createCard(cardData) {
   const card = new Card(cardData, cardTemplateSelector, popupImage.open);
-  return card.generateCard();
+  const cardElement = card.generateCard();
+  return cardElement;
 }
-
-function addCardToContainer(cardElement) {
-  document.querySelector(elementsList).prepend(cardElement);
-}
-
-cardPopupForm.addEventListener('submit', (evt) => {
-  evt.preventDefault();
-  const infoCardPopup = { title: titleCardPopup.value, link: urlCardPopup.value };
-  const cardElement = createCard(infoCardPopup);
-  addCardToContainer(cardElement);
-  popupAddCard.close();
-});
 
 section.addCardArray();
