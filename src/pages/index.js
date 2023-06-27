@@ -1,12 +1,12 @@
 import './index.css';
 
-import FormValidator from '../components/FormValidator';
 import initialCards from '../constants/constants.js';
 import Card from '../components/Card.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
+import FormValidator from '../components/FormValidator';
 
 const addCardButton = document.querySelector('.profile__button-add');
 
@@ -49,7 +49,6 @@ const popupProfile = new PopupWithForm(popupProfileSelector, (dataUser) => {
 });
 
 const popupAddCard = new PopupWithForm(popupCardSelector, (data) => {
-  console.log('Submitted data:', data);
   const cardElement = createCard(data);
   section.addItem(cardElement);
   popupAddCard.close();
