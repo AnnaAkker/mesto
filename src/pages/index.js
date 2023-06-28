@@ -2,11 +2,11 @@ import './index.css';
 
 import initialCards from '../constants/constants.js';
 import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
-import FormValidator from '../components/FormValidator';
 
 const addCardButton = document.querySelector('.profile__button-add');
 
@@ -31,7 +31,6 @@ const infoConfig = {
 };
 
 const validConfig = {
-  formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__submit-button',
   disabledButtonClass: 'popup__submit-button_disabled',
@@ -60,24 +59,29 @@ formValidatorProfilePopup.enableValidation();
 const formValidatorCardPopup = new FormValidator(validConfig, cardPopupForm);
 formValidatorCardPopup.enableValidation();
 
-const section = new Section({
-  items: initialCards,
-  renderer: (element) => {
-    const cardElement = createCard(element);
-    return cardElement;
-  }
-}, elementsList);
+const section = new Section(
+  {
+    items: initialCards,
+    renderer: (element) => {
+      const cardElement = createCard(element);
+      return cardElement;
+    },
+  },
+  elementsList
+);
 
 popupProfile.setEventListeners();
 popupImage.setEventListeners();
 popupAddCard.setEventListeners();
 
 editButtonProfilePopup.addEventListener('click', () => {
+  formValidatorProfilePopup.resetError();
   popupProfile.setInputValue(userInfo.getUserInfo());
   popupProfile.open();
 });
 
 addCardButton.addEventListener('click', () => {
+  formValidatorCardPopup.resetError();
   popupAddCard.open();
 });
 

@@ -12,7 +12,5 @@ export default class PopupWithImage extends Popup {
         this._popupImage.alt = cardData.title;
         this._popupImageSignature.textContent = cardData.title;
         super.open()
-    };
-
-    
+    }; 
 };
