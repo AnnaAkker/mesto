@@ -10,15 +10,15 @@ export default class FormValidator {
     this._buttonElement = this._form.querySelector(this._submitButtonSelector);
   }
 
-  _showInputError(errorText, input) {
-    errorText.classList.add(this._inputErrorClass);
-    errorText.textContent = input.validationMessage;
+  _showInputError(errorElement, input) {
+    errorElement.classList.add(this._inputErrorClass);
+    errorElement.textContent = input.validationMessage;
     input.classList.add(this._inputErrorClass);
   }
 
-  _hideInputError(errorText, input) {
-    errorText.classList.remove(this._inputErrorClass);
-    errorText.textContent = '';
+  _hideInputError(errorElement, input) {
+    errorElement.classList.remove(this._inputErrorClass);
+    errorElement.textContent = '';
     input.classList.remove(this._inputErrorClass); 
   }
 
@@ -41,8 +41,8 @@ export default class FormValidator {
   }
 
   _checkInputValidity(input) {
-    const errorText = this._form.querySelector(`#${input.id}-error`);
-    input.validity.valid ? this._hideInputError(errorText, input) : this._showInputError(errorText, input);
+    const errorElement = this._form.querySelector(`#${input.id}-error`);
+    input.validity.valid ? this._hideInputError(errorElement, input) : this._showInputError(errorElement, input);
   }
 
   _setEventListeners() {
