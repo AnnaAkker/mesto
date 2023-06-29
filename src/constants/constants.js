@@ -22,6 +22,49 @@ const initialCards = [
     { title: 'Велосипед на берегу', link: Велосипеднаберегу }
 ];
 
+// Константы //
 
-export default initialCards;
+const imagePopup = document.querySelector('.profile__image');
+const imageButtonEdit = document.querySelector('.profile__image-overlay');
 
+const editButtonProfilePopup = document.querySelector('.profile__button-edit');
+const editImagePopup = document.querySelector('.popup_edit-image');
+const editeImageForm = editImagePopup.querySelector('.popup__form');
+
+const profilePopup = document.querySelector('.popup_edit-profile');
+const formProfilePopup = profilePopup.querySelector('.popup__form');
+
+const addCardButton = document.querySelector('.profile__button-add');
+const cardPopup = document.querySelector('.popup_add-card');
+const cardPopupForm = cardPopup.querySelector('.popup__form');
+
+// Объекты валидации //
+
+const infoConfig = {
+    profileNameSelector: '.profile__name',
+    profileSubtitleSelector: '.profile__subtitle'
+};
+
+const validConfig = {
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__submit-button',
+    disabledButtonClass: 'popup__submit-button_disabled',
+    inputErrorClass: 'popup__input_invalid',
+    errorClass: 'popup__input-error'
+};
+
+export {
+    initialCards,
+    imagePopup,
+    imageButtonEdit,
+    editButtonProfilePopup,
+    editImagePopup,
+    editeImageForm,
+    profilePopup,
+    formProfilePopup,
+    addCardButton,
+    cardPopup,
+    cardPopupForm,
+    infoConfig,
+    validConfig
+};
