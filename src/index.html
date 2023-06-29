@@ -64,6 +64,27 @@
                 <p class="popup__image-signature"></p>
             </div>
         </div>
+        <!-- Попап аватар --> 
+        <div class="popup popup_edit-avatar">
+            <div class="popup__container">
+                <button type="button" class="popup__button-close"></button>
+                <form class="popup__form" name="editAvatar" novalidate>
+                    <h2 class="popup__name">Новое место</h2>
+                    <input id='avatar-input' type="url" class="popup__input popup__input_type_link" name="avatar" placeholder="Ссылка на картинку" required>
+                    <span id='avatar-input-error' class="popup__input-error"></span>
+                    <button type="submit" class="popup__submit-button">Создать</button>
+                </form>
+            </div>
+        </div>
+        <!-- Удаление карточки --> 
+        <div class="popup card_delete">
+            <div class="popup__container">
+                <button type="button" class="popup__button-close"></button>
+                <form class="popup__form" name="deleteCard" novalidate>
+                    <button type="submit" class="popup__submit-button">Создать</button>
+                </form>
+            </div>
+        </div>
         <!--  Попап "Добавить карточку"-->
         <template id="cards">
             <div class="elements__card">
