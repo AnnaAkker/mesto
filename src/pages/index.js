@@ -21,6 +21,11 @@ import {
   addCardButton,
   cardPopup,
   cardPopupForm,
+  popupProfileSelector,
+  popupImageSelector,
+  popupCardSelector,
+  popupImageEditSelector,
+  PopupDeleteCardSelector,
   infoConfig,
   validConfig
 } from '../constants/constants.js'
@@ -28,14 +33,7 @@ import {
 // Константы // 
 
 const elementsList = '.elements';
-const elementsListSelector = '.elements';
 const cardTemplateSelector = '#cards';
-
-const popupProfileSelector = '.popup_edit-profile';
-const popupImageSelector = '.popup_open-images';
-const popupCardSelector = '.popup_add-card';
-const popupImageEditSelector = '.popup_edit-image';
-const PopupDeleteCardSelector = '.card_delete';
 
 const userInfo = new UserInfo(infoConfig);
 

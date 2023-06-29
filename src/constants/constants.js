@@ -38,6 +38,12 @@ const addCardButton = document.querySelector('.profile__button-add');
 const cardPopup = document.querySelector('.popup_add-card');
 const cardPopupForm = cardPopup.querySelector('.popup__form');
 
+const popupProfileSelector = '.popup_edit-profile';
+const popupImageSelector = '.popup_open-images';
+const popupCardSelector = '.popup_add-card';
+const popupImageEditSelector = '.popup_edit-image';
+const PopupDeleteCardSelector = '.card_delete';
+
 // Объекты валидации //
 
 const infoConfig = {
@@ -65,6 +71,11 @@ export {
     addCardButton,
     cardPopup,
     cardPopupForm,
+    popupProfileSelector,
+    popupImageSelector,
+    popupCardSelector,
+    popupImageEditSelector,
+    PopupDeleteCardSelector,
     infoConfig,
     validConfig
 };
