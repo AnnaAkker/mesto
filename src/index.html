@@ -13,7 +13,9 @@
         <main>
             <section class="profile">
                 <div class="profile__description">
-                    <img class="profile__image" src="<%=require('./images/Profile_image.jpg')%>" alt="Фотография в профиле">
+                    <button class="button-image-overlay profile__image-overlay" type="button">
+                        <img class="profile__image" src="<%=require('./images/Profile_image.jpg')%>" alt="Фотография в профиле">
+                    </button>
                     <div class="profile__block">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
                         <button type="button" class="profile__button-edit"></button>
@@ -65,14 +67,14 @@
             </div>
         </div>
         <!-- Попап аватар --> 
-        <div class="popup popup_edit-avatar">
+        <div class="popup popup_edit-image">
             <div class="popup__container">
                 <button type="button" class="popup__button-close"></button>
-                <form class="popup__form" name="editAvatar" novalidate>
-                    <h2 class="popup__name">Новое место</h2>
-                    <input id='avatar-input' type="url" class="popup__input popup__input_type_link" name="avatar" placeholder="Ссылка на картинку" required>
-                    <span id='avatar-input-error' class="popup__input-error"></span>
-                    <button type="submit" class="popup__submit-button">Создать</button>
+                <form class="popup__form" name="imageform" novalidate>
+                    <h2 class="popup__name">Обновить аватар</h2>
+                    <input id='image-input' type="url" class="popup__input popup__input_type_link" name="image" placeholder="Ссылка на картинку" required>
+                    <span id='image-input-error' class="popup__input-error"></span>
+                    <button type="submit" class="popup__submit-button">Сохранить</button>
                 </form>
             </div>
         </div>
@@ -81,7 +83,8 @@
             <div class="popup__container">
                 <button type="button" class="popup__button-close"></button>
                 <form class="popup__form" name="deleteCard" novalidate>
-                    <button type="submit" class="popup__submit-button">Создать</button>
+                    <h2 class="popup__name">Вы уверены?</h2>
+                    <button type="submit" class="popup__submit-button">Да</button>
                 </form>
             </div>
         </div>

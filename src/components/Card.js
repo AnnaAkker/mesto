@@ -1,10 +1,11 @@
 export default class Card { 
-  constructor(cardsData, cardTemplateSelector, photoImagePopup) { 
+  constructor(cardsData, cardTemplateSelector, photoImagePopup, openDeleteCardPopup) { 
     this._cardsData = cardsData;
     this._title = cardsData.title; 
     this._link = cardsData.link; 
     this._cardTemplateSelector = cardTemplateSelector; 
     this._photoImagePopup = photoImagePopup; 
+    this._openDeleteCardPopup = openDeleteCardPopup
   };
  
   _getTemplate() { 
@@ -12,8 +13,7 @@ export default class Card {
   };
  
   _handleDeleteCard = () => { 
-    this._cardElement.remove(); 
-    this._cardElement = null; 
+    this._openDeleteCardPopup(this)
   };
  
   _handleLikeButton = () => { 
@@ -29,7 +29,12 @@ export default class Card {
     this._trashButton.addEventListener('click', this._handleDeleteCard); 
     this._imageElement.addEventListener('click', this._handleImageClick); 
   };
- 
+
+  removeCard() {
+    this._cardElement.remove(); 
+    this._cardElement = null;
+  }
+
   generateCard() { 
     this._cardElement = this._getTemplate(); 
     this._imageElement = this._cardElement.querySelector('.elements__image'); 
