@@ -9,6 +9,7 @@ import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupDeleteCard from '../components/PopupDeleteCard.js';
+import Api from '../components/Api.js';
 import {
   initialCards,
   imagePopup,
@@ -34,6 +35,14 @@ import {
 
 const elementsList = '.elements';
 const cardTemplateSelector = '#cards';
+
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-69',
+  headers: {
+    authorization: '0c57c3de-de42-467b-8dac-900fb3a946d3',
+    'Content-Type': 'application/json'
+  }
+}); 
 
 const userInfo = new UserInfo(infoConfig);
 
@@ -64,12 +73,8 @@ formValidatorCardPopup.enableValidation();
 const formValidatorEditImage = new FormValidator(validConfig, editeImageForm);
 formValidatorEditImage.enableValidation();
 
-const section = new Section( {
-    items: initialCards,
-    renderer: (element) => {
-      const cardElement = createCard(element);
-      return cardElement;
-    },
+const section = new Section((element) => {
+  section.addItem(createCard(element));
   }, elementsList
 );
 
@@ -118,4 +123,13 @@ function createCard(cardData) {
   return card.generateCard();
 }
 
-section.addCardArray();
+// section.addCardArray(initialCards);
+
+
+Promise.all([api.getInfo(), api.getCards()])
+  .then(([dataUser, dataCard]) => {
+    dataCard.forEach(element => element.myId = dataUser._id);
+    userInfo.setUserInfo({username: dataUser.name, subtitle: dataUser.about, image: dataUser.avatar})
+    section.addCardArray(dataCard)
+});
+  

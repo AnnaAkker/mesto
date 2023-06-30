@@ -1,7 +1,9 @@
 export default class Card { 
   constructor(cardsData, cardTemplateSelector, photoImagePopup, openDeleteCardPopup) { 
+    
     this._cardsData = cardsData;
-    this._title = cardsData.title; 
+    this._title = cardsData.name;
+    this._myId = cardsData._myId;
     this._link = cardsData.link; 
     this._cardTemplateSelector = cardTemplateSelector; 
     this._photoImagePopup = photoImagePopup; 
