@@ -79,7 +79,7 @@
             </div>
         </div>
         <!-- Удаление карточки --> 
-        <div class="popup card_delete">
+        <div class="popup popup_card_delete">
             <div class="popup__container">
                 <button type="button" class="popup__button-close"></button>
                 <form class="popup__form" name="deleteCard" novalidate>
@@ -95,7 +95,10 @@
                 <img class="elements__image" src="#" alt="#">
                 <div class="elements__description">
                     <h2 class="elements__description-title"></h2>
-                    <button type="button" class="elements__like-button"></button>
+                    <div class="elements__container">
+                        <button type="button" class="elements__like-button"></button>
+                        <span class="elements__counter"></span>
+                    </div>
                 </div> 
             </div>
         </template>

@@ -48,21 +48,51 @@ const userInfo = new UserInfo(infoConfig);
 
 const popupImage = new PopupWithImage(popupImageSelector);
 
+// Функция создания карточки//
+
+function createCard(cardData) {
+  const card = new Card(cardData, cardTemplateSelector, popupImage.open, deleteCardPopup.open);
+  return card.generateCard();
+}
+
+const section = new Section((element) => {
+  section.addItemAppend(createCard(element));
+  }, elementsList
+);
+
 const popupProfile = new PopupWithForm(popupProfileSelector, (dataUser) => {
-  userInfo.setUserInfo(dataUser);
-  popupProfile.close();
+  api.setUserInfo(dataUser)
+    .then(res => {
+    userInfo.setUserInfo( {username: res.name, subtitle: res.about, image: res.avatar} )
+    popupProfile.close();
+  })
+  .catch((error => console.error(`Ошибка редактирования ${error}`)))
+  .finally()
 });
 
 const popupAddCard = new PopupWithForm(popupCardSelector, (data) => {
-  const cardElement = createCard(data);
-  section.addItem(cardElement);
-  popupAddCard.close();
+  Promise.all([api.getInfo(), api.addCards(data)])
+    .then(([dataUser, dataCard]) => {
+      dataCard.myId = dataUser._id;
+      section.addItemPrepend(createCard(element))
+      popupAddCard.close();
+  })
+  .catch((error => console.error(`Ошибка создания карточки ${error}`)))
+  .finally()
 });
 
 const popupEditImage = new PopupWithForm(popupImageEditSelector, (data) => {
-  imagePopup.src = data.image;
-  popupEditImage.close()
+  api.setAvatar(data)
+    .then(res => {
+      console.log(res);
+      userInfo.setUserInfo({ username: res.name, subtitle: res.about, image: res.avatar });
+    })
+    .catch(error => console.error(`Ошибка редактирования аватара ${error}`))
+    .finally(() => {
+    });
+    popupEditImage.close()
 });
+
 
 const formValidatorProfilePopup = new FormValidator(validConfig, formProfilePopup);
 formValidatorProfilePopup.enableValidation();
@@ -72,11 +102,6 @@ formValidatorCardPopup.enableValidation();
 
 const formValidatorEditImage = new FormValidator(validConfig, editeImageForm);
 formValidatorEditImage.enableValidation();
-
-const section = new Section((element) => {
-  section.addItem(createCard(element));
-  }, elementsList
-);
 
 // Слушатели//
 
@@ -116,20 +141,12 @@ const deleteCardPopup = new PopupDeleteCard(PopupDeleteCardSelector, (element) =
 
 deleteCardPopup.setEventListeners()
 
-// Функция создания карточки//
-
-function createCard(cardData) {
-  const card = new Card(cardData, cardTemplateSelector, popupImage.open, deleteCardPopup.open);
-  return card.generateCard();
-}
-
-// section.addCardArray(initialCards);
-
 
 Promise.all([api.getInfo(), api.getCards()])
   .then(([dataUser, dataCard]) => {
-    dataCard.forEach(element => element.myId = dataUser._id);
-    userInfo.setUserInfo({username: dataUser.name, subtitle: dataUser.about, image: dataUser.avatar})
+    dataCard.forEach(element => element.myid = dataUser._id);
+    userInfo.setUserInfo({ username: dataUser.name, subtitle: dataUser.about, image: dataUser.avatar })
     section.addCardArray(dataCard)
-});
+  })
+  .catch((error) => console.error(`Ошибка создания ${error}`))
   
