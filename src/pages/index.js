@@ -11,7 +11,7 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import PopupDeleteCard from '../components/PopupDeleteCard.js';
 import Api from '../components/Api.js';
 import {
-  initialCards,
+  // initialCards,
   imagePopup,
   imageButtonEdit,
   editButtonProfilePopup,
