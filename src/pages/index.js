@@ -163,4 +163,3 @@ Promise.all([api.getInfo(), api.getCards()])
     section.addCardArray(dataCard)
   })
   .catch((error) => console.error(`Ошибка создания ${error}`))
-  
