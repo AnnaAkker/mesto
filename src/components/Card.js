@@ -1,6 +1,5 @@
 export default class Card { 
   constructor(cardData, cardTemplateSelector, photoImagePopup, deleteCardPopup, likesCheck) { 
-    this._cardData = cardData;
     this._title = cardData.name;
     this._myId = cardData.myid;
     this._likes = cardData.likes;
