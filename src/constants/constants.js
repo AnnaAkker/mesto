@@ -42,7 +42,6 @@ const popupProfileSelector = '.popup_edit-profile';
 const popupImageSelector = '.popup_open-images';
 const popupCardSelector = '.popup_add-card';
 const popupImageEditSelector = '.popup_edit-image';
-const PopupDeleteCardSelector = '.popup_card_delete';
 
 // Объекты валидации //
 
@@ -76,7 +75,6 @@ export {
     popupImageSelector,
     popupCardSelector,
     popupImageEditSelector,
-    PopupDeleteCardSelector,
     infoConfig,
     validConfig
 };
