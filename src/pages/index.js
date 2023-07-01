@@ -55,13 +55,11 @@ function createCard(cardData) {
     if (likeItem.classList.contains('elements__like-button_active')) {
       api.deleteLike(cardId)
         .then(res => {
-          console.log(res)
           card.toggleLikes(res.likes);
         })
     } else {
       api.addLike(cardId)
         .then(res => {
-          console.log(res)
           card.toggleLikes(res.likes)
         })
         .catch((error => console.error(`Ошибка добавления лайка ${error}`)))
