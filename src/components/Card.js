@@ -19,11 +19,11 @@ export default class Card {
   };
  
   _handleDeleteCard = () => { 
-    this._deleteCardPopup(this)
+    this._deleteCardPopup({ card: this, cardId: this._cardId});
   };
  
   _handleLikeButton = () => { 
-    this._counterLike(this._likeButton, this._cardId) 
+    this._checkLike(this._likeButton, this._cardId) 
   };
  
   _handleImageClick = () => {  
@@ -44,7 +44,7 @@ export default class Card {
     }
   }
 
-  _counterLike() {
+  _checkLike() {
     this._likes.forEach(item => {
       if (item._id === this._myId) {
         this._likeButton.classList.toggle('elements__like-button_active')
@@ -72,7 +72,7 @@ export default class Card {
     this._imageElement.alt = this._title; 
     this._titleElement.textContent = this._title; 
 
-    this._counterLike()
+    this._checkLike()
     this._checkVisTrashButton(); 
     this._setEventListeners();
  

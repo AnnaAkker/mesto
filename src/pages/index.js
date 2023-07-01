@@ -11,7 +11,6 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import PopupDeleteCard from '../components/PopupDeleteCard.js';
 import Api from '../components/Api.js';
 import {
-  // initialCards,
   imagePopup,
   imageButtonEdit,
   editButtonProfilePopup,
@@ -43,6 +42,20 @@ const api = new Api({
     'Content-Type': 'application/json'
   }
 }); 
+
+// Удаление карточки // 
+
+const deleteCardPopup = new PopupDeleteCard(PopupDeleteCardSelector, ({card, cardId}) => {
+  api.deleteCard(cardId)
+    .then(() => {
+      card.removeCard()
+      deleteCardPopup.close()
+    })
+    .catch((error) => console.error(`Ошибка при удалении ${error}`))
+    .finally()
+});
+
+deleteCardPopup.setEventListeners()
 
 const userInfo = new UserInfo(infoConfig);
 
@@ -80,7 +93,7 @@ const popupProfile = new PopupWithForm(popupProfileSelector, (dataUser) => {
     popupProfile.close();
   })
   .catch((error => console.error(`Ошибка редактирования ${error}`)))
-  .finally()
+  .finally(() => popupProfile.setupDefaultText());
 });
 
 const popupAddCard = new PopupWithForm(popupCardSelector, (data) => {
@@ -91,8 +104,7 @@ const popupAddCard = new PopupWithForm(popupCardSelector, (data) => {
       popupAddCard.close();
   })
   .catch((error => console.error(`Ошибка создания карточки ${error}`)))
-  .finally()
-  popupAddCard.close()
+  .finally(() => popupAddCard.setupDefaultText());
 });
 
 const popupEditImage = new PopupWithForm(popupImageEditSelector, (data) => {
@@ -102,8 +114,7 @@ const popupEditImage = new PopupWithForm(popupImageEditSelector, (data) => {
       userInfo.setUserInfo({ username: res.name, subtitle: res.about, image: res.avatar });
     })
     .catch(error => console.error(`Ошибка редактирования аватара ${error}`))
-    .finally(() => {
-    });
+    .finally(() => popupEditImage.setupDefaultText());
     popupEditImage.close()
 });
 
@@ -145,15 +156,6 @@ addCardButton.addEventListener('click', () => {
   formValidatorCardPopup.resetError();
   popupAddCard.open();
 });
-
-// Удаление карточки // 
-
-const deleteCardPopup = new PopupDeleteCard(PopupDeleteCardSelector, (element) => {
-  element.removeCard();
-  deleteCardPopup.close()
-});
-
-deleteCardPopup.setEventListeners()
 
 
 Promise.all([api.getInfo(), api.getCards()])
