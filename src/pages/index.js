@@ -72,6 +72,7 @@ const section = new Section((cardData) => {
   section.addItemAppend(createCard(cardData));
 }, elementsList);
 
+
 const popupProfile = new PopupWithForm(popupProfileSelector, (dataUser) => {
   api.setUserInfo(dataUser)
     .then(res => {
@@ -85,7 +86,7 @@ const popupProfile = new PopupWithForm(popupProfileSelector, (dataUser) => {
 const popupAddCard = new PopupWithForm(popupCardSelector, (data) => {
   api.addCards(data)
     .then(dataCard => {
-      dataCard.myId = userInfo.getUserId();
+      dataCard.myid = userInfo.getUserId();
       section.addItemPrepend(createCard(dataCard));
       popupAddCard.close();
     })

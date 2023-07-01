@@ -19,7 +19,6 @@ export default class Card {
     this._titleElement = this._cloneElementSelector.querySelector('.elements__description-title');
   }
   
-
   _handleDeleteCard = () => {
     this._deleteCardPopup({ card: this, cardId: this._cardId });
   }

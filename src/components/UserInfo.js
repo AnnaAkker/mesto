@@ -8,7 +8,6 @@ export default class UserInfo {
 
     setUserId(userId) {
         this._userId = userId;
-
     }
 
     getUserId() {
