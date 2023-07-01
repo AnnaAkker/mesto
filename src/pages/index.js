@@ -61,6 +61,7 @@ function createCard(cardData) {
     } else {
       api.addLike(cardId)
         .then(res => {
+          console.log(res)
           card.toggleLikes(res.likes)
         })
         .catch((error => console.error(`Ошибка добавления лайка ${error}`)))

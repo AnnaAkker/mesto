@@ -16,7 +16,6 @@ export default class Card {
     this._trashButton = this._cloneElementSelector.querySelector('.elements__trash-button'); 
     this._likeButton = this._cloneElementSelector.querySelector('.elements__like-button'); 
     this._counter =  this._cloneElementSelector.querySelector('.elements__counter');
-
   };
  
   _handleDeleteCard = () => { 
@@ -48,18 +47,16 @@ export default class Card {
   _counterLike() {
     this._likes.forEach(item => {
       if (item._id === this._myId) {
-        this._likeButton.classList.toggle('elements__like-button_active', true);
-        return;
+        this._likeButton.classList.toggle('elements__like-button_active')
+        return
       }
     });
     this._counter.textContent = this._likesLength;
   }
 
   toggleLikes(likes) {
-    this._likes = likes;
     this._likeButton.classList.toggle('elements__like-button_active');
     this._counter.textContent = likes.length;
-    console.log(this.toggleLikes)
   }
 
   removeCard() {
