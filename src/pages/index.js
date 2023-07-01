@@ -51,14 +51,28 @@ const popupImage = new PopupWithImage(popupImageSelector);
 // Функция создания карточки//
 
 function createCard(cardData) {
-  const card = new Card(cardData, cardTemplateSelector, popupImage.open, deleteCardPopup.open);
+  const card = new Card(cardData, cardTemplateSelector, popupImage.open, deleteCardPopup.open, (likeItem, cardId) => {
+    if (likeItem.classList.contains('elements__like-button_active')) {
+      api.deleteLike(cardId)
+        .then(res => {
+          console.log(res)
+          card.toggleLikes(res.likes);
+        })
+    } else {
+      api.addLike(cardId)
+        .then(res => {
+          card.toggleLikes(res.likes)
+        })
+        .catch((error => console.error(`Ошибка добавления лайка ${error}`)))
+    }
+  });
   return card.generateCard();
 }
 
-const section = new Section((element) => {
-  section.addItemAppend(createCard(element));
-  }, elementsList
-);
+const section = new Section((cardData) => {
+  section.addItemAppend(createCard(cardData));
+}, elementsList);
+
 
 const popupProfile = new PopupWithForm(popupProfileSelector, (dataUser) => {
   api.setUserInfo(dataUser)
@@ -79,6 +93,7 @@ const popupAddCard = new PopupWithForm(popupCardSelector, (data) => {
   })
   .catch((error => console.error(`Ошибка создания карточки ${error}`)))
   .finally()
+  popupAddCard.close()
 });
 
 const popupEditImage = new PopupWithForm(popupImageEditSelector, (data) => {
